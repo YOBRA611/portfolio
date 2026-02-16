@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Brian Odhiambo Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
+<!--favicon-->
+    <link rel="icon" href="Images/WhatsApp Image 2025-07-17 at 18.22.56.jpeg">
+
+<style>
+/* Global Styles */
+body {
+    margin: 0;
+    font-family: 'Jost', sans-serif;
+    background-color: #000;
+    color: #fff;
+}
+html{
+    scroll-behavior: smooth;
+}
+/* scroll button*/
+#progress{
+    position: fixed;
+    bottom: 20px;
+    right: 10px;
+    width: 45px;
+    height: 45px;
+    display: none;
+    place-items: center;
+    border-radius: 50%;
+    box-shadow: 0,0,10px rgb(225, 222, 216);
+    cursor: pointer;
+    z-index: 9999;
+}
+#progress-value{
+    display: block;
+    height: calc(98% - 3px);
+    width: calc(98% - 3px);
+    background-color: rgb(0, 0, 0);
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    font-size: 24px;
+    z-index: 9999;
+}
+/* styling whatsapp*/
+.whatsapp-float {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    z-index: 999;
+    cursor: pointer;
+    border-radius: 50%;
+    transition: transform 0.3s ease;
+}
+.whatsapp-float:hover {
+    transform: scale(1.1);
+}
+header .logo{
+    text-decoration: none;
+    font-size: 28px;
+    font-weight: 500;
+    margin: 30px;
+}
+a { color: #d4af37; text-decoration: none; }
+.container { max-width: 1200px; margin: auto; padding: 20px; }
+section { padding: 60px 20px; }
+h2 { font-size: 2.5rem; color: #d4af37; margin-bottom: 20px; text-align: center; }
+/* Hero */
+.hero { text-align: center; padding: 100px 20px; }
+.hero h1 { font-size: 3rem; margin-bottom: 10px; color: #d4af37; }
+.hero p { font-size: 1.2rem; color: #fff; }
+.btn { display: inline-block; padding: 10px 20px; margin-top: 20px; border: 2px solid #d4af37; border-radius: 5px; color: #d4af37; transition: 0.3s; }
+.btn:hover { background-color: #d4af37; color: #000; }
+/* Projects */
+.projects-grid, .gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* increased min width */
+    gap: 30px;
+}
+.project-card, .design-card {
+    background-color: #111;
+    border-radius: 1px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.project-card img, .design-card img {
+    width: 100%;
+    max-width: 600px; /* increase max size */
+    height: auto;
+    object-fit: cover;
+}
+.project-card h3, .design-card h3 {
+    margin-top: 10px;
+    color: #d4af37;
+    text-align: center;
+}
+.project-card p {
+    color: #fff;
+    text-align: center;
+    margin: 10px 0;
+}
+.project-card .btn {
+    display: block;
+    margin: 15px auto 0 auto; /* centers button */
+    text-align: center;
+    padding:6px 20px;
+    border: 2px solid #d4af37;
+    border-radius: 5px;
+    color: #d4af37;
+    transition: 0.3s;
+    margin-bottom: 10px;
+}
+.project-card .btn:hover {
+    background-color: #d4af37;
+    color: #000;
+}
+
+/* Skills */
+.skills { display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; }
+.skill { background-color: #111; padding: 15px 20px; border-radius: 8px; color: #d4af37; font-weight: 600; }
+/* Certificates */
+.certificates { display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; }
+.certificate-card { background-color: #111; border-radius: 10px; padding: 15px; text-align: center; }
+.certificate-card img { max-width: 200px; height: auto; border-radius: 5px; }
+/* About */
+.about p { max-width: 800px; margin: auto; font-size: 1.1rem; line-height: 1.6; color: #fff; }
+/* Contact */
+.contact form { max-width: 600px; margin: auto; display: flex; flex-direction: column; gap: 15px; }
+.contact input, .contact textarea { padding: 10px; border-radius: 5px; border: none; }
+.contact button { padding: 12px; border-radius: 5px; border: none; background-color: #d4af37; color: #000; font-weight: 600; cursor: pointer; transition: 0.3s; }
+.contact button:hover { background-color: #fff; }
+</style>
+</head>
+<body>
+    <!--scrollbutton-->
+    <div id="progress">
+        <span id="progress-value">&#x1F815</span>
+    </div>
+
+     <!-- WhatsApp Chat Button -->
+    <a href="https://wa.me/254704597348?text=Hello%20Bravitech%20Soln!%20I'm%20interested%20in%20your%20services" 
+        class="whatsapp-float" target="_blank" title="Chat with us on WhatsApp">
+        <img src="https://img.icons8.com/color/48/000000/whatsapp--v1.png" alt="WhatsApp Chat">
+    </a>
+
+    <header class="animated">
+        <a href="" class="logo">Portfolio.</a>
+    </header>
+<!-- Hero Section -->
+<section class="hero">
+  <img src="Images/WhatsApp Image 2025-07-17 at 18.22.56.jpeg"
+       alt="Brian Odhiambo"
+       style="width:150px; height:150px; border-radius:50%; object-fit:cover; margin-bottom:20px;"
+       data-aos="fade-up" data-aos-delay="100">
+
+  <h1 data-aos="fade-up" data-aos-delay="200">Brian Odhiambo</h1>
+  <p data-aos="fade-up" data-aos-delay="300">
+    Web Developer & Graphic Designer | Building Web Solutions & Creative Designs
+  </p>
+
+  <!-- Buttons: CV Downloads + LinkedIn -->
+  <div style="margin-top:25px;" data-aos="fade-up" data-aos-delay="400">
+    <a href="Documents/MY RESUME.pdf" 
+       class="btn">Download Web Developer CV</a>
+
+    <a href="Documents/MY RESUME (1).pdf"
+       class="btn" 
+       style="margin-left:10px;">Download Graphic Designer CV</a>
+
+    <a href="https://www.linkedin.com/in/brian-odhiambo-a152b5298/" target="_blank" class="btn" style="margin-left:10px;">
+      LinkedIn Profile
+    </a>
+  </div>
+</section>
+<!--web projects-->
+<section>
+    <h2 data-aos="fade-up" data-aos-delay="100">Web Development Projects</h2>
+    <div class="projects-grid container">
+        <div class="project-card" data-aos="fade-up" data-aos-delay="200">
+            <img src="Images/Screenshot 2025-11-12 003558.png" alt="Project 1">
+            <h3>Brickhouse Restaurant & Conference Center</h3>
+            <p>A fully responsive website for a restaurant and conference center with booking features and menu showcase.</p>
+            <a href="https://brickhouserestaurantandconference.co.ke" target="_blank" class="btn">View Live</a>
+        </div>
+        <div class="project-card" data-aos="fade-up" data-aos-delay="300">
+            <img src="Images/Screenshot 2025-11-12 105608.png" alt="Project 2">
+            <h3>Insign Link Global Connect</h3>
+            <p>A corporate website for visa application services and study abroad agency.</p>
+            <a href="https://insignlinkglobalconnect.com" target="_blank" class="btn">View Live</a>
+        </div>
+        <div class="project-card" data-aos="fade-up" data-aos-delay="400">
+            <img src="Images/Screenshot 2025-11-12 004122.png" alt="Project 3">
+            <h3>Lossy Online Stores</h3>
+            <p>An e-commerce platform for online shopping with integrated payment gateway and product catalog.</p>
+            <a href="https://lossyonlinestores.com" target="_blank" class="btn">View Live</a>
+        </div>
+        <div class="project-card" data-aos="fade-up" data-aos-delay="200">
+            <img src="Images/Screenshot 2026-02-06 221805.png" alt="Project 1">
+            <h3>Pearls & Psalms Hospital</h3>
+            <p>A fully responsive website for a health facility in kakamega county.</p>
+            <a href="https://www.pearlspsalms.com" target="_blank" class="btn">View Live</a>
+        </div>
+        <div class="project-card" data-aos="fade-up" data-aos-delay="600">
+            <img src="Images/Screenshot 2025-11-12 004334.png" alt="Project 5">
+            <h3>Kakamega Yearly Meeting</h3>
+            <p>A church website for Kakamega Quaker Yearly Meeting featuring events, news, and resources.</p>
+            <a href="https://kakamegayearlymeeting.org/" target="_blank" class="btn">View Live</a>
+        </div>
+        <div class="project-card" data-aos="fade-up" data-aos-delay="500">
+            <img src="Images/Screenshot 2026-01-24 120217.png" alt="Project 4">
+            <h3>Bravitech Solns</h3>
+            <p>A tech solutions portfolio website displaying services, projects, and contact info.</p>
+            <a href="https://yobra611.github.io/Bravitech-Soln/" target="_blank" class="btn">View Live</a>
+        </div>
+        <div class="project-card" data-aos="fade-up" data-aos-delay="600">
+            <img src="Images/Capture 4.PNG" alt="Project 5">
+            <h3>Sparkling Cleaning agency</h3>
+            <p>A cleaning agency website showcasing services, work before and after with a quick service request.</p>
+            <a href="https://yobra611.github.io/sparklecleaning/" target="_blank" class="btn">View Live</a>
+        </div>
+        <div class="project-card" data-aos="fade-up" data-aos-delay="600">
+            <img src="Images/Capture 16.PNG" alt="Project 5">
+            <h3>Hotel Website</h3>
+            <p>A Hotel Website showcasing the menu plus the gallery of the meal and the entire hotel environment with google maps intergrations.</p>
+            <a href="https://yobra611.github.io/demohotelsite/" target="_blank" class="btn">View Live</a>
+        </div>
+        <div class="project-card" data-aos="fade-up" data-aos-delay="600">
+            <img src="Images/Screenshot 2026-02-06 222625.png" alt="Project 5">
+            <h3>Certified Public Accountant Wesaya Consult</h3>
+            <p>A website for CPA Wesaya consult firm in Nairobi county</p>
+            <a href="http://yobra611.github.io/certified-public-accountant-wesaya-consult/" target="_blank" class="btn">View Live</a>
+        </div>
+        <div class="project-card" data-aos="fade-up" data-aos-delay="600">
+            <img src="Images/Screenshot 2025-11-12 144750.png" alt="Project 5">
+            <h3>Silver Back Media Production</h3>
+            <p>Trusted partner in visual storytelling, dedicated to preserving cherished moments and crafting impactful stories. </p>
+            <a href="https://silverbackmediaproduction.wordpress.com/" target="_blank" class="btn">View Live</a>
+        </div>
+    </div>
+</section>
+<!-- Graphic Design Projects -->
+<section>
+    <h2 data-aos="fade-up" data-aos-delay="100">Graphic Design Portfolio</h2>
+    <div class="gallery-grid container">
+        <div class="design-card" data-aos="fade-up" data-aos-delay="200">
+            <img src="Images/Bravitech.jpg" loading="lazy" alt="Design 1">
+            <h3>A Web development Advert</h3>
+        </div>
+        <div class="design-card" data-aos="fade-up" data-aos-delay="300">
+            <img src="Images/8396a643119dfe5705741a3ff510f124.jpg" loading="lazy" alt="Design 1">
+            <h3>Kids Coding Fest</h3>
+        </div>
+        <div class="design-card" data-aos="fade-up" data-aos-delay="400">
+            <img src="Images/Bravi graphics.jpg" loading="lazy" alt="Design 1">
+            <h3>Graphic Design poster</h3>
+        </div>
+        <div class="design-card" data-aos="fade-up" data-aos-delay="500">
+            <img src="Images/Insign Global.jpg" loading="lazy" alt="Design 1">
+            <h3>Study Abroard Flyer</h3>
+        </div>
+        <div class="design-card" data-aos="fade-up" data-aos-delay="600">
+            <img src="Images/Graduation 1.jpg" loading="lazy" alt="Design 1">
+            <h3>Graduation Banner</h3>
+        </div>
+        <div class="design-card" data-aos="fade-up" data-aos-delay="700">
+            <img src="Images/WhatsApp Image 2025-07-21 at 17.00.41.jpeg" loading="lazy" alt="Design 1">
+            <h3>Banners</h3>
+        </div>
+        <div class="design-card" data-aos="fade-up" data-aos-delay="800">
+            <img src="Images/WhatsApp Image 2025-07-21 at 17.00.41 (1).jpeg" loading="lazy" alt="Design 1">
+            <h3>School admission advert</h3>
+        </div>
+        <div class="design-card" data-aos="fade-up" data-aos-delay="900">
+            <img src="Images/duisburg developers.jpg" loading="lazy" alt="Design 1">
+            <h3>We build your dreams</h3>
+        </div>
+        <div class="design-card" data-aos="fade-up" data-aos-delay="1000">
+            <img src="Images/poster.png" loading="lazy" alt="Design 1">
+            <h3>Marketing Posters</h3>
+        </div>
+        <div class="design-card" data-aos="fade-up" data-aos-delay="1100">
+            <img src="Images/Web Development.png" loading="lazy" alt="Design 1">
+            <h3>Web development advert</h3>
+        </div>
+        <div class="design-card" data-aos="fade-up" data-aos-delay="1200">
+            <img src="Images/WhatsApp Image 2025-10-06 at 10.17.37_40d600b9.jpg" loading="lazy" alt="Design 1">
+            <h3>Poster for Webinars</h3>
+        </div>
+        <div class="design-card" data-aos="fade-up" data-aos-delay="1300">
+            <img src="Images/60ab42f72582585efed0431d3883c0c7.jpg" loading="lazy" alt="Design 1">
+            <h3>Let's Tour</h3>
+        </div>
+        <div class="design-card" data-aos="fade-up" data-aos-delay="1400">
+            <img src="Images/Real estate 1.jpg" loading="lazy" alt="Design 1">
+            <h3>Real Estate Logo</h3>
+        </div>
+        <div class="design-card" data-aos="fade-up" data-aos-delay="1500">
+            <img src="Images/M&S 1.png" loading="lazy" alt="Design 1">
+            <h3>The M & S Logo</h3>
+        </div>
+        <div class="design-card" data-aos="fade-up" data-aos-delay="1600">
+            <img src="Images/real estate wooden logo.jpg" loading="lazy" alt="Design 1">
+            <h3>Real Estate wooden logo</h3>
+        </div>
+        <div class="design-card" data-aos="fade-up" data-aos-delay="1700">
+            <img src="Images/Untitled-1.png" loading="lazy" alt="Design 1">
+            <h3>Vines Kenya</h3>
+        </div>
+        <div class="design-card" data-aos="fade-up" data-aos-delay="1800">
+            <img src="Images/WhatsApp Image 2025-07-21 at 16.59.02.jpeg" loading="lazy" alt="Design 1">
+            <h3>Business Card front</h3>
+        </div>
+        <div class="design-card" data-aos="fade-up" data-aos-delay="1900">
+            <img src="Images/WhatsApp Image 2025-07-21 at 16.59.03.jpeg" loading="lazy" alt="Design 1">
+            <h3>Business Card Back</h3>
+        </div>
+    </div>
+</section>
+<!-- Skills -->
+<section>
+    <h2 data-aos="fade-up" data-aos-delay="100">Skills</h2>
+    <div class="skills container">
+        <div class="skill" data-aos="fade-up" data-aos-delay="200">HTML</div>
+        <div class="skill" data-aos="fade-up" data-aos-delay="300">CSS</div>
+        <div class="skill" data-aos="fade-up" data-aos-delay="400">JavaScript</div>
+        <div class="skill" data-aos="fade-up" data-aos-delay="500">PHP</div>
+        <div class="skill" data-aos="fade-up" data-aos-delay="600">WordPress</div>
+        <div class="skill" data-aos="fade-up" data-aos-delay="700">Photoshop</div>
+        <div class="skill" data-aos="fade-up" data-aos-delay="800">Canva</div>
+        <div class="skill" data-aos="fade-up" data-aos-delay="900">Corel Draw</div>
+    </div>
+</section>
+<!-- About -->
+<section class="about">
+    <h2 data-aos="fade-up" data-aos-delay="100">About Me</h2>
+    <p data-aos="fade-up" data-aos-delay="200">I am Brian Odhiambo, a passionate software developer 
+        and 
+        graphic designer with a strong focus on creating innovative and visually engaging digital
+        experiences. 
+        I specialize in building responsive, user-friendly websites that combine clean code with 
+        modern design principles, while also crafting compelling graphics for branding, social 
+        media, and marketing materials.<br/>
+        I am always eager to learn and grow, currently exploring Data Science to 
+        broaden my understanding of data-driven solutions and complement my development
+        work. With a blend of creativity and technical skills, I enjoy transforming ideas
+        into practical, high-quality digital products that help businesses and individuals
+        stand out.</p>
+</section>
+<!-- Contact -->
+<section class="contact">
+    <h2 data-aos="fade-up" data-aos-delay="100">Contact Me</h2>
+    <form action="https://formspree.io/f/mnnlqlry" method="POST" data-aos="fade-up" data-aos-delay="200">
+        <input type="text" name="name" placeholder="Your Name" required data-aos="fade-up" data-aos-delay="300">
+        <input type="email" name="email" placeholder="Your Email" required data-aos="fade-up" data-aos-delay="400">
+        <input type="text" name="subject" placeholder="Subject" required data-aos="fade-up" data-aos-delay="500">
+        <textarea name="message" rows="5" placeholder="Your Message" required data-aos="fade-up" data-aos-delay="600"></textarea>
+        <button type="submit" data-aos="fade-up" data-aos-delay="700">Send Message</button>
+    </form>
+</section>
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+    AOS.init({ duration: 1500, once: true });
+
+    let calcScrollValue = () => {
+    let scrollProgress = document.getElementById("progress");
+    let progressValue = document.getElementById("progress-value");
+    let pos = document.documentElement.scrollTop;
+    let calcHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+    let scrollValue = Math.round((pos * 100)/calcHeight);
+        if (pos > 100) {
+            scrollProgress.style.display = "grid";
+        } else {
+            scrollProgress.style.display = "none";
+        }
+        scrollProgress.addEventListener("click", () => {
+            document.documentElement.scrollTop = 0;
+        });
+        scrollProgress.style.background = `conic-gradient(#d4af37 ${scrollValue}%, white ${scrollValue}%)`;
+        };
+
+    window.onscroll = calcScrollValue;
+    window.onload = calcScrollValue;
+</script>
+</body>
+</html>
