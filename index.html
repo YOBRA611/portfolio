@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brian Odhiambo | Web Developer & QA Engineer</title>
+    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="Images/Profile.jpeg">
+
+    <style>
+        /* Global Styles */
+        body {
+            margin: 0;
+            font-family: 'Jost', sans-serif;
+            background-color: #050505;
+            color: #f5f5f5;
+            overflow-x: hidden;
+        }
+        html {
+            scroll-behavior: smooth;
+        }
+        a { 
+            color: #d4af37; 
+            text-decoration: none; 
+            transition: color 0.3s ease;
+        }
+        .container { 
+            max-width: 1200px; 
+            margin: auto; 
+            padding: 20px; 
+        }
+        section { 
+            padding: 80px 20px; 
+        }
+        h2 { 
+            font-size: 2.5rem; 
+            color: #d4af37; 
+            margin-bottom: 40px; 
+            text-align: center;
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+
+        /* Scroll Button */
+        #progress {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 45px;
+            height: 45px;
+            display: none;
+            place-items: center;
+            border-radius: 50%;
+            box-shadow: 0 0 15px rgba(212, 175, 55, 0.3);
+            cursor: pointer;
+            z-index: 9999;
+        }
+        #progress-value {
+            display: grid;
+            height: calc(100% - 4px);
+            width: calc(100% - 4px);
+            background-color: #000;
+            border-radius: 50%;
+            place-items: center;
+            font-size: 20px;
+            z-index: 9999;
+        }
+
+        /* WhatsApp Floating Button */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            z-index: 999;
+            cursor: pointer;
+            border-radius: 50%;
+            transition: transform 0.3s ease;
+        }
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+        }
+
+        header .logo {
+            text-decoration: none;
+            font-size: 24px;
+            font-weight: 600;
+            margin: 30px;
+            display: inline-block;
+            color: #d4af37;
+            letter-spacing: 1px;
+        }
+
+        /* Hero Styling */
+        .hero { text-align: center; padding: 60px 20px 100px 20px; }
+        .hero h1 { font-size: 3.5rem; margin-bottom: 10px; color: #d4af37; font-weight: 700; }
+        .hero p { font-size: 1.25rem; color: #ccc; max-width: 600px; margin: 0 auto 30px auto; line-height: 1.5; }
+        
+        .btn-group {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 25px;
+        }
+        .btn { 
+            display: inline-block; 
+            padding: 12px 24px; 
+            border: 2px solid #d4af37; 
+            border-radius: 4px; 
+            color: #d4af37; 
+            font-weight: 500;
+            transition: all 0.3s ease; 
+            background: transparent;
+        }
+        .btn:hover { 
+            background-color: #d4af37; 
+            color: #000; 
+            transform: translateY(-2px);
+        }
+        .btn-secondary {
+            border-color: #444;
+            color: #aaa;
+        }
+        .btn-secondary:hover {
+            background-color: #222;
+            color: #fff;
+            border-color: #666;
+        }
+
+        /* Core Card Layout System */
+        .projects-grid, .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+        }
+        .project-card, .design-card {
+            background-color: #111;
+            border: 1px solid #222;
+            border-radius: 6px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+        .project-card:hover, .design-card:hover {
+            transform: translateY(-5px);
+            border-color: #d4af37;
+        }
+        .card-img-wrapper {
+            width: 100%;
+            height: 200px;
+            overflow: hidden;
+            border-bottom: 1px solid #222;
+        }
+        .project-card img, .design-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        .project-card:hover img, .design-card:hover img {
+            transform: scale(1.05);
+        }
+        .card-content {
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+        .project-card h3, .design-card h3 {
+            margin: 0 0 10px 0;
+            color: #d4af37;
+            font-size: 1.3rem;
+            font-weight: 600;
+        }
+        .project-card p {
+            color: #aaa;
+            font-size: 0.95rem;
+            line-height: 1.5;
+            margin: 0 0 20px 0;
+            flex-grow: 1;
+        }
+        .card-actions {
+            display: flex;
+            gap: 10px;
+            margin-top: auto;
+        }
+        .card-actions .btn {
+            flex: 1;
+            text-align: center;
+            padding: 8px 16px;
+            font-size: 0.9rem;
+            margin: 0;
+        }
+
+        /* Skills Layout */
+        .skills { display: flex; flex-wrap: wrap; justify-content: center; gap: 15px; }
+        .skill { background-color: #111; border: 1px solid #222; padding: 12px 24px; border-radius: 4px; color: #d4af37; font-weight: 500; letter-spacing: 0.5px; }
+        
+        /* About Layout */
+        .about p { max-width: 800px; margin: auto; font-size: 1.15rem; line-height: 1.7; color: #ccc; text-align: justify; }
+        
+        /* Form Styling */
+        .contact form { max-width: 600px; margin: auto; display: flex; flex-direction: column; gap: 20px; }
+        .contact input, .contact textarea { padding: 14px; border-radius: 4px; border: 1px solid #222; background-color: #111; color: #fff; font-family: inherit; font-size: 1rem; transition: border-color 0.3s ease; }
+        .contact input:focus, .contact textarea:focus { outline: none; border-color: #d4af37; }
+        .contact button { padding: 14px; border-radius: 4px; border: none; background-color: #d4af37; color: #000; font-weight: 600; font-size: 1rem; cursor: pointer; transition: all 0.3s ease; }
+        .contact button:hover { background-color: #fff; transform: translateY(-2px); }
+    </style>
+</head>
+<body>
+
+    <!-- Scroll Top Progress Button -->
+    <div id="progress">
+        <span id="progress-value">&#x1F815;</span>
+    </div>
+
+    <!-- WhatsApp Floating Communication Action -->
+    <a href="https://wa.me/254704597348?text=Hello%20Brian!%20I%20viewed%20your%20portfolio%20and%20would%20love%20to%20discuss%20a%20remote%20contract." 
+       class="whatsapp-float" target="_blank" title="Chat with me on WhatsApp">
+        <img src="https://img.icons8.com/color/48/000000/whatsapp--v1.png" alt="WhatsApp Connection">
+    </a>
+
+    <header>
+        <a href="#" class="logo">Brian.Dev</a>
+    </header>
+
+    <!-- Hero Showcase Section -->
+    <section class="hero">
+        <img src="Images/Profile.jpeg" alt="Brian Odhiambo" style="width:140px; height:140px; border-radius:50%; object-fit:cover; margin-bottom:24px; border: 3px solid #d4af37;" data-aos="fade-up" data-aos-delay="100">
+        <h1 data-aos="fade-up" data-aos-delay="200">Brian Odhiambo</h1>
+        <p data-aos="fade-up" data-aos-delay="300">
+            Web Developer & QA Engineer | Specializing in Custom Business Applications, Management Portals & Automated Testing Engines.
+        </p>
+
+        <div class="btn-group" data-aos="fade-up" data-aos-delay="400">
+            <a href="Documents/CVs.pdf" class="btn">Download Engineering CV</a>
+            <a href="https://www.linkedin.com/in/brian-odhiambo-a152b5298/" target="_blank" class="btn">Connect on LinkedIn</a>
+        </div>
+    </section>
+
+    <!-- Web Applications & Engineering Matrix -->
+    <section id="projects">
+        <h2 data-aos="fade-up" data-aos-delay="100">Web Applications & Systems</h2>
+        <div class="projects-grid container">
+            
+            <!-- Project 1 -->
+            <div class="project-card" data-aos="fade-up" data-aos-delay="200">
+                <div class="card-img-wrapper"><img src="Images/Screenshot 2025-11-12 003558.png" alt="Brickhouse Portal"></div>
+                <div class="card-content">
+                    <h3>Brickhouse Restaurant & Conference Center</h3>
+                    <p>A corporate enterprise web solution with automated booking features, real-time availability workflows, and custom resource optimization layout management.</p>
+                    <div class="card-actions">
+                        <a href="https://brickhouserestaurantandconference.co.ke" target="_blank" class="btn">View Live</a>
+                        <a href="#" target="_blank" class="btn btn-secondary">View Code</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 2 -->
+            <div class="project-card" data-aos="fade-up" data-aos-delay="300">
+                <div class="card-img-wrapper"><img src="Images/Screenshot 2025-11-12 105608.png" alt="Insign Link Connect"></div>
+                <div class="card-content">
+                    <h3>Insign Link Global Connect</h3>
+                    <p>An international consultancy platform targeting academic mobility and dynamic visa application tracing metrics. Features highly optimized onboarding funnel architecture.</p>
+                    <div class="card-actions">
+                        <a href="https://insignlinkglobalconnect.com" target="_blank" class="btn">View Live</a>
+                        <a href="#" target="_blank" class="btn btn-secondary">View Code</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 3 -->
+            <div class="project-card" data-aos="fade-up" data-aos-delay="400">
+                <div class="card-img-wrapper"><img src="Images/Screenshot 2025-11-12 004122.png" alt="Lossy Commerce Engine"></div>
+                <div class="card-content">
+                    <h3>Lossy Online Stores</h3>
+                    <p>High-conversion e-commerce platform incorporating secure transaction state handling, automated product stock counting variables, and responsive design systems.</p>
+                    <div class="card-actions">
+                        <a href="https://lossyonlinestores.com" target="_blank" class="btn">View Live</a>
+                        <a href="#" target="_blank" class="btn btn-secondary">View Code</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 4 -->
+            <div class="project-card" data-aos="fade-up" data-aos-delay="200">
+                <div class="card-img-wrapper"><img src="Images/Screenshot 2026-02-06 221805.png" alt="Pearls & Psalms Core"></div>
+                <div class="card-content">
+                    <h3>Pearls & Psalms Hospital</h3>
+                    <p>A mission-critical medical services architecture supporting secure routing systems, clinic scheduling endpoints, and compliant client-facing resource layouts.</p>
+                    <div class="card-actions">
+                        <a href="https://www.pearlspsalms.com" target="_blank" class="btn">View Live</a>
+                        <a href="#" target="_blank" class="btn btn-secondary">View Code</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 5 -->
+            <div class="project-card" data-aos="fade-up" data-aos-delay="300">
+                <div class="card-img-wrapper"><img src="Images/Screenshot 2025-11-12 004334.png" alt="Church System Setup"></div>
+                <div class="card-content">
+                    <h3>Kakamega Yearly Meeting Portal</h3>
+                    <p>A community resources indexing matrix managing cross-regional institutional updates, resource downloads, and event tracking state timelines securely.</p>
+                    <div class="card-actions">
+                        <a href="https://kakamegayearlymeeting.org/" target="_blank" class="btn">View Live</a>
+                        <a href="#" target="_blank" class="btn btn-secondary">View Code</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 6 -->
+            <div class="project-card" data-aos="fade-up" data-aos-delay="400">
+                <div class="card-img-wrapper"><img src="Images/Screenshot 2026-02-06 222625.png" alt="CPA Wesaya Engine"></div>
+                <div class="card-content">
+                    <h3>CPA Wesaya Consult</h3>
+                    <p>Corporate platform for a prominent financial and audit advisory firm. Optimized for localized dynamic client service rendering and institutional integrity metrics.</p>
+                    <div class="card-actions">
+                        <a href="https://certifiedpublicaccountantwesayaconsult.co.ke/" target="_blank" class="btn">View Live</a>
+                        <a href="#" target="_blank" class="btn btn-secondary">View Code</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 7 -->
+            <div class="project-card" data-aos="fade-up" data-aos-delay="200">
+                <div class="card-img-wrapper"><img src="Images/Screenshot 2026-04-27 183822.png" alt="Cycle Graph Setup"></div>
+                <div class="card-content">
+                    <h3>Cycle Graph Solutions</h3>
+                    <p>A responsive product showcasing engine managing targeted inventory itemization and component layout styling workflows.</p>
+                    <div class="card-actions">
+                        <a href="https://yobra611.github.io/cyclegraphsolutions/" target="_blank" class="btn">View Live</a>
+                        <a href="https://github.com/yobra611/cyclegraphsolutions" target="_blank" class="btn btn-secondary">View Code</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 8 -->
+            <div class="project-card" data-aos="fade-up" data-aos-delay="300">
+                <div class="card-img-wrapper"><img src="Images/Screenshot 2026-03-06 233143.png" alt="Prime Properties Logic"></div>
+                <div class="card-content">
+                    <h3>Real Estate & Property Listing</h3>
+                    <p>Interactive listing logic tracking variable state data points for property classifications, active filter sorting matrices, and transactional intent capture forms.</p>
+                    <div class="card-actions">
+                        <a href="https://yobra611.github.io/primeproperties-listing/" target="_blank" class="btn">View Live</a>
+                        <a href="https://github.com/yobra611/primeproperties-listing" target="_blank" class="btn btn-secondary">View Code</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 9 -->
+            <div class="project-card" data-aos="fade-up" data-aos-delay="400">
+                <div class="card-img-wrapper"><img src="Images/Capture 4.PNG" alt="Sparkle Engine"></div>
+                <div class="card-content">
+                    <h3>Sparkling Cleaning Agency</h3>
+                    <p>Service automation platform evaluating client deployment state metrics, offering automated booking intake pipelines and deep asynchronous input validation mapping.</p>
+                    <div class="card-actions">
+                        <a href="https://yobra611.github.io/sparklecleaning/" target="_blank" class="btn">View Live</a>
+                        <a href="https://github.com/yobra611/sparklecleaning" target="_blank" class="btn btn-secondary">View Code</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 10 -->
+            <div class="project-card" data-aos="fade-up" data-aos-delay="200">
+                <div class="card-img-wrapper"><img src="Images/Capture 16.PNG" alt="Hotel Engine"></div>
+                <div class="card-content">
+                    <h3>Dynamic Hotel & Menu Showcase</h3>
+                    <p>A hospitality deployment featuring interactive digital menu arrays, environmental gallery layout grids, and full asynchronous Google Maps API endpoint integration.</p>
+                    <div class="card-actions">
+                        <a href="https://yobra611.github.io/demohotelsite/" target="_blank" class="btn">View Live</a>
+                        <a href="https://github.com/yobra611/demohotelsite" target="_blank" class="btn btn-secondary">View Code</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 11 -->
+            <div class="project-card" data-aos="fade-up" data-aos-delay="300">
+                <div class="card-img-wrapper"><img src="Images/Screenshot 2026-01-24 120217.png" alt="Brydex Systems"></div>
+                <div class="card-content">
+                    <h3>Brydex Technologies Hub</h3>
+                    <p>A technical engineering operations interface outlining modular B2B service vectors, system optimization diagnostics, and automated intake forms.</p>
+                    <div class="card-actions">
+                        <a href="https://yobra611.github.io/brydextechnologies/" target="_blank" class="btn">View Live</a>
+                        <a href="https://github.com/YOBRA611/brydextechnologies" target="_blank" class="btn btn-secondary">View Code</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 12 -->
+            <div class="project-card" data-aos="fade-up" data-aos-delay="400">
+                <div class="card-img-wrapper"><img src="Images/Screenshot 2025-11-12 144750.png" alt="Silver Back Portal"></div>
+                <div class="card-content">
+                    <h3>Silver Back Media Platform</h3>
+                    <p>A content indexing and media portfolio architecture built to manage high-fidelity visual assets, streaming pathways, and commercial project documentation rules.</p>
+                    <div class="card-actions">
+                        <a href="https://silverbackmediaproduction.wordpress.com/" target="_blank" class="btn">View Live</a>
+                        <a href="#" target="_blank" class="btn btn-secondary">View Code</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Strategic Visual Value Layer (Graphic & Design Assets) -->
+    <section style="background-color: #0b0b0b; border-top: 1px solid #111; border-bottom: 1px solid #111;">
+        <h2 data-aos="fade-up" data-aos-delay="100">UI/UX Design & Brand Asset Visuals</h2>
+        <div class="gallery-grid container">
+            
+            <div class="design-card" data-aos="fade-up" data-aos-delay="200">
+                <div class="card-img-wrapper"><img src="Images/Bravitech.jpg" loading="lazy" alt="Design 1"></div>
+                <div class="card-content"><h3>Technical Product Advert Scaling</h3></div>
+            </div>
+
+            <div class="design-card" data-aos="fade-up" data-aos-delay="300">
+                <div class="card-img-wrapper"><img src="Images/8396a643119dfe5705741a3ff510f124.jpg" loading="lazy" alt="Design 2"></div>
+                <div class="card-content"><h3>Tech Event Campaign Layouts</h3></div>
+            </div>
+
+            <div class="design-card" data-aos="fade-up" data-aos-delay="400">
+                <div class="card-img-wrapper"><img src="Images/Bravi graphics.jpg" loading="lazy" alt="Design 3"></div>
+                <div class="card-content"><h3>High-Impact Commercial Marketing Assets</h3></div>
+            </div>
+
+            <div class="design-card" data-aos="fade-up" data-aos-delay="500">
+                <div class="card-img-wrapper"><img src="Images/Insign Global.jpg" loading="lazy" alt="Design 4"></div>
+                <div class="card-content"><h3>Corporate Informational Brand Blueprints</h3></div>
+            </div>
+
+            <div class="design-card" data-aos="fade-up" data-aos-delay="600">
+                <div class="card-img-wrapper"><img src="Images/Graduation 1.jpg" loading="lazy" alt="Design 5"></div>
+                <div class="card-content"><h3>Large-Scale Large Format Print Designs</h3></div>
+            </div>
+
+            <div class="design-card" data-aos="fade-up" data-aos-delay="700">
+                <div class="card-img-wrapper"><img src="Images/WhatsApp Image 2025-07-21 at 17.00.41.jpeg" loading="lazy" alt="Design 6"></div>
+                <div class="card-content"><h3>Corporate Media & Event Exhibition Systems</h3></div>
+            </div>
+
+            <div class="design-card" data-aos="fade-up" data-aos-delay="800">
+                <div class="card-img-wrapper"><img src="Images/WhatsApp Image 2025-07-21 at 17.00.41 (1).jpeg" loading="lazy" alt="Design 7"></div>
+                <div class="card-content"><h3>Educational Identity & Admissions Layouts</h3></div>
+            </div>
+
+            <div class="design-card" data-aos="fade-up" data-aos-delay="900">
+                <div class="card-img-wrapper"><img src="Images/duisburg developers.jpg" loading="lazy" alt="Design 8"></div>
+                <div class="card-content"><h3>Software Agency Creative Core Direction</h3></div>
+            </div>
+
+            <div class="design-card" data-aos="fade-up" data-aos-delay="1000">
+                <div class="card-img-wrapper"><img src="Images/poster.png" loading="lazy" alt="Design 9"></div>
+                <div class="card-content"><h3>B2C Engagement Campaign Graphic Kits</h3></div>
+            </div>
+
+            <div class="design-card" data-aos="fade-up" data-aos-delay="1100">
+                <div class="card-img-wrapper"><img src="Images/Web Development.png" loading="lazy" alt="Design 10"></div>
+                <div class="card-content"><h3>Software Branding Promotion Blueprints</h3></div>
+            </div>
+
+            <div class="design-card" data-aos="fade-up" data-aos-delay="1200">
+                <div class="card-img-wrapper"><img src="Images/WhatsApp Image 2025-10-06 at 10.17.37_40d600b9.jpg" loading="lazy" alt="Design 11"></div>
+                <div class="card-content"><h3>Interactive Broadcast & Webinar Asset Layouts</h3></div>
+            </div>
+
+            <div class="design-card" data-aos="fade-up" data-aos-delay="1300">
+                <div class="card-img-wrapper"><img src="Images/60ab42f72582585efed0431d3883c0c7.jpg" loading="lazy" alt="Design 12"></div>
+                <div class="card-content"><h3>Commercial Leisure & Travel Dynamic Flyers</h3></div>
+            </div>
+
+            <div class="design-card" data-aos="fade-up" data-aos-delay="1400">
+                <div class="card-img-wrapper"><img src="Images/Real estate 1.jpg" loading="lazy" alt="Design 13"></div>
+                <div class="card-content"><h3>Real Estate Vector Branding & Typography</h3></div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Technical Competencies Matrix -->
+    <section>
+        <h2 data-aos="fade-up" data-aos-delay="100">Technical Competencies Matrix</h2>
+        <div class="skills container">
+            <div class="skill" data-aos="fade-up" data-aos-delay="200">PHP & Core Logic</div>
+            <div class="skill" data-aos="fade-up" data-aos-delay="300">JavaScript (ES6+)</div>
+            <div class="skill" data-aos="fade-up" data-aos-delay="400">MySQL & Database Schema Tuning</div>
+            <div class="skill" data-aos="fade-up" data-aos-delay="500">Tailwind CSS & Responsive Layouts</div>
+            <div class="skill" data-aos="fade-up" data-aos-delay="600">Manual QA, Regression & Integration Testing</div>
+            <div class="skill" data-aos="fade-up" data-aos-delay="700">UI/UX Layout Architecture (Figma/Photoshop)</div>
+        </div>
+    </section>
+
+    <!-- Professional Profile -->
+    <section class="about">
+        <h2 data-aos="fade-up" data-aos-delay="100">Professional Profile</h2>
+        <p data-aos="fade-up" data-aos-delay="200">
+            I am an engineering analyst specialized in designing web systems that combine high-performance code pipelines with strict operational data integrity. My execution strategy spans creating robust, high-availability business tracking platforms (utilizing custom PHP infrastructure, complex relational SQL, and modern reactive interface layout designs via JavaScript and Tailwind CSS) alongside auditing system failure paths via thorough QA verification metrics. 
+            <br/><br/>
+            I approach engineering problems with a rigorous structural framework: verifying component reliability layer-by-layer, mitigating UI state vulnerabilities, and ensuring multi-platform compliance. My background enables me to transition flawlessly between crafting full production web builds and validating runtime logic parameters for advanced technical operational systems.
+        </p>
+    </section>
+
+    <!-- Direct Lead Intake Terminal -->
+    <section class="contact">
+        <h2 data-aos="fade-up" data-aos-delay="100">Initiate Remote Engineering Request</h2>
+        <form action="https://formspree.io/f/mnnlqlry" method="POST" data-aos="fade-up" data-aos-delay="200">
+            <input type="text" name="name" placeholder="Contact/Organization Name" required data-aos="fade-up" data-aos-delay="300">
+            <input type="email" name="email" placeholder="Corporate Domain Email Address" required data-aos="fade-up" data-aos-delay="400">
+            <input type="text" name="subject" placeholder="Project Engagement / Contract Scope" required data-aos="fade-up" data-aos-delay="500">
+            <textarea name="message" rows="5" placeholder="Define technical backlogs, required engineering bandwidth, or testing parameters..." required data-aos="fade-up" data-aos-delay="600"></textarea>
+            <button type="submit">Submit Strategic Intake</button>
+        </form>
+    </section>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({ duration: 1200, once: true });
+
+        const calcScrollValue = () => {
+            let scrollProgress = document.getElementById("progress");
+            let pos = document.documentElement.scrollTop;
+            let calcHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            let scrollValue = Math.round((pos * 100) / calcHeight);
+            
+            if (pos > 100) {
+                scrollProgress.style.display = "grid";
+            } else {
+                scrollProgress.style.display = "none";
+            }
+            
+            scrollProgress.style.background = `conic-gradient(#d4af37 ${scrollValue}%, #222 ${scrollValue}%)`;
+        };
+
+        document.getElementById("progress").addEventListener("click", () => {
+            document.documentElement.scrollTop = 0;
+        });
+
+        window.onscroll = calcScrollValue;
+        window.onload = calcScrollValue;
+    </script>
+</body>
+</html>
